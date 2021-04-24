@@ -13,7 +13,7 @@ live_loop :kick do
 end
 
 with_fx :reverb, cathedral: 1 do
-  live_loop :chords do
+  live_loop :chords, delay: 12 do
     use_synth :dsaw
     sync :kick
     notes_low = (scale :d3, :minor_pentatonic, num_octaves: 1).take(4)
@@ -29,7 +29,7 @@ with_fx :reverb, cathedral: 1 do
 end
 
 with_fx :reverb, cathedral: 1 do
-  live_loop :chords2 do
+  live_loop :chords2, delay: 2 do
     use_synth :beep
     sync :kick
     [1, 3, 6, 5].each do |d|
@@ -40,11 +40,11 @@ with_fx :reverb, cathedral: 1 do
 end
 
 with_fx :eq, low: 1 do
-  live_loop :melody do
+  live_loop :melody, delay: 16 do
     sync :kick
     use_synth :pluck
     notes = []
-    rrand_i(6, 8).times do |i|
+    rrand_i(3, 8).times do |i|
       notes[i] = scale(:d3, :minor_pentatonic).choose
     end
     play_pattern_timed notes, 0.5
